@@ -2,7 +2,6 @@ package ru.skypro.lessons.springboot;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +21,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         return employees;
     }
 
+
     @Override
     public Integer getSalarySum() {
 
@@ -33,23 +33,19 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     @Override
-    public Optional<Integer> getMinSalary() {
+    public Employee getMinSalary() {
 
-        Optional<Integer> list = employees.stream()
-                .map(Employee::getSalary)
-                .min(Comparator.naturalOrder());
-
-        return list;
+        return employees.stream()
+                .min(Comparator.comparingInt(Employee::getSalary))
+                .orElseThrow(EmployeeNotFoundExeption::new);
     }
 
     @Override
-    public Optional<Integer> getMaxSalary() {
+    public Employee getMaxSalary() {
 
-        Optional<Integer> list = employees.stream()
-                .map(Employee::getSalary)
-                .max(Comparator.naturalOrder());
-
-        return list;
+        return employees.stream()
+                .max(Comparator.comparingInt(Employee::getSalary))
+                .orElseThrow(EmployeeNotFoundExeption::new);
     }
 
     @Override

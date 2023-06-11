@@ -25,12 +25,12 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public Optional<Integer> getMinSalary() {
+    public Employee getMinSalary() {
         return employeeRepository.getMinSalary();
     }
 
     @Override
-    public Optional<Integer> getMaxSalary() {
+    public Employee getMaxSalary() {
         return employeeRepository.getMaxSalary();
     }
 

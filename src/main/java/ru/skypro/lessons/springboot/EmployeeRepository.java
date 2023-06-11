@@ -9,9 +9,9 @@ public interface EmployeeRepository {
 
     Integer getSalarySum();
 
-    Optional<Integer> getMinSalary();
+    Employee getMinSalary();
 
-    Optional<Integer> getMaxSalary();
+    Employee getMaxSalary();
 
     List<Employee> getAllEmployeesWithSalaryHigherThenAvg();
 }
